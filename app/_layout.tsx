@@ -31,6 +31,7 @@ export default function RootLayout() {
       <Stack options={{ headerShown: false }}>
         <Stack.Screen name="(tabs)"  />
         <Stack.Screen name="+not-found" />
+        <Stack.Sreen name="contact"/>
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

@@ -21,9 +21,6 @@ export default function TabLayout() {
         <Stack.Screen name={'home'} options={{title: 'Index', tabBarIcon: ({ color }) => <Ionicons size={28} name="house.fill" color={color} />}}/>
         <Stack.Screen name={'about'} options={{title: 'Index', tabBarIcon: ({ color }) => <Foundation size={28} name="info.fill" color={color} />}}/>
         <Stack.Screen name={'contact'} options={{title: 'Index', tabBarIcon: ({ color }) =><AntDesign name="contacts" size={28} color={color}/>}}/>
-        {/*<Tabs.Screen name="home" options={{title: 'Index', tabBarIcon: ({ color }) => <Ionicons size={28} name="house.fill" color={color} />}}/>*/}
-        {/*<Tabs.Screen name="about" options={{title: 'Index', tabBarIcon: ({ color }) => <Foundation size={28} name="info.fill" color={color} />}}/>*/}
-        {/*<Tabs.Screen name="contact" options={{title: 'Index', tabBarIcon: ({ color }) =><AntDesign name="contacts" size={28} color={color}/>}}/>*/}
     </Stack>
   );
 }
