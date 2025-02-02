@@ -2,7 +2,7 @@ import {SafeAreaView, Text, View} from 'react-native'
 import React from 'react'
 import Navbar from "@/components/reuseables/navbar";
 import {ThemedText} from "@/components/ThemedText";
-import Animated from 'react-native-reanimated'
+import Animated, {useAnimatedRef} from 'react-native-reanimated'
 import Footer from "@/components/reuseables/footer";
 import {Stack} from "expo-router";
 
@@ -44,11 +44,13 @@ const comments = [
         header:'perfect resort and spa services'
     },
 ]
-export default function Contact(){
+export default function AboutScreen(){
+    const scrollRef = useAnimatedRef<Animated.ScrollView>();
+
     return (
         <Stack.Screen options={{headerShown:false}}>
             <SafeAreaView>
-                <Animated.ScrollView>
+                <Animated.ScrollView ref={scrollRef}>
                     <Navbar/>
                     <Text>About us</Text>
                     <Image source={""}/>
