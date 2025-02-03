@@ -50,7 +50,7 @@ export default function AboutScreen(){
     return (
         <Stack.Screen options={{headerShown:false}}>
             <SafeAreaView>
-                <Animated.ScrollView ref={scrollRef}>
+                <Animated.ScrollView ref={scrollRef} showsHorizontalScrollIndicator={false}>
                     <Navbar/>
                     <Text>About us</Text>
                     <Image source={""}/>

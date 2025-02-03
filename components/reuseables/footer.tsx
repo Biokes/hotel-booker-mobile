@@ -4,7 +4,6 @@ import {FadeInDown} from "react-native-reanimated";
 
 export default function Footer() {
     const [email, setEmail] = useState<string>('');
-    const [text, setText] = useState<string>('');
     const [isShowingModal, showModal] = useState<boolean>(false);
     const messageRef = useRef<any>(null);
 
@@ -12,7 +11,6 @@ export default function Footer() {
         if (isShowingModal) {
             const timer = setTimeout(() => {
                 showModal(false);
-                setText('');
             }, 5000);
             return () => clearTimeout(timer);
         }
@@ -23,7 +21,6 @@ export default function Footer() {
     };
 
     const handleSubmit = () => {
-        setText('Subscribed successfully');
         showModal(true);
         setEmail('');
     };
