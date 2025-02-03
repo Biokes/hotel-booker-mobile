@@ -5,7 +5,7 @@ import {RoomData} from "@/types/interfaces";
 import Footer from "@/components/reuseables/footer";
 import FlatList = Animated.FlatList;
 
-// const {width} = Dimensions.get('screen')
+const {width, height} = Dimensions.get('screen')
 const styles= StyleSheet.create({
     background:{
         display:'flex',
@@ -50,7 +50,9 @@ const styles= StyleSheet.create({
         borderRadius:25,
     },
     cardContainer:{
-        overflow:'hidden'
+        overflow:'hidden',
+        marginInline:5,
+        width: 300
     }
 })
 export default function HomeComponent() {
