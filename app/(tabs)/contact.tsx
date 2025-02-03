@@ -9,7 +9,6 @@ export default function Contact() {
     const scrollRef = useAnimatedRef<Animated.ScrollView>();
 
     return (
-        <Stack.Screen screenOptions={{ headerShown: false }}>
             <SafeAreaView>
                 <Animated.ScrollView ref={scrollRef}>
                     <View>
@@ -33,6 +32,5 @@ export default function Contact() {
                     </View>
                 </Animated.ScrollView>
             </SafeAreaView>
-        </Stack.Screen>
     )
 }
