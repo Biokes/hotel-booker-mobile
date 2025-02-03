@@ -2,7 +2,7 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     navbar: {
-        display: "flex",
+        flex:1,
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingInline:4,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
     name:{
         fontSize: 12,
-        fontWeight:"bold"
+        fontWeight:600
     }
 })
 export default styles

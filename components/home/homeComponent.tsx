@@ -1,9 +1,10 @@
-import {View, Text, StyleSheet, Dimensions, ImageBackground, ScrollView, Animated, Image} from 'react-native'
+import {View, Text, StyleSheet, Dimensions, ImageBackground, Animated,} from 'react-native'
 import React from 'react'
 import Navbar from "@/components/reuseables/navbar";
 import {RoomData} from "@/types/interfaces";
 import Footer from "@/components/reuseables/footer";
 import FlatList = Animated.FlatList;
+import {FadeInDown} from "react-native-reanimated";
 
 const {width, height} = Dimensions.get('screen')
 const styles= StyleSheet.create({
@@ -95,21 +96,21 @@ export default function HomeComponent() {
         }
     ]
     return (
-        <ScrollView>
+        <Animated.View entering={FadeInDown.duration(100).springify()}>
             <Navbar/>
             <ImageBackground source={{uri:'https://cdn.britannica.com/96/115096-050-5AFDAF5D/Bellagio-Hotel-Casino-Las-Vegas.jpg'}}
                 resizeMode={"cover"} blurRadius={4} style={styles.background}
             >
-                <View style={styles.overlay}>
+                <Animated.View entering={FadeInDown.delay(200).duration(100).springify()} style={styles.overlay}>
                     <Text style={styles.BigText}>Relax & unwind of our spa treatments</Text>
                     <Text style={styles.smallText}>Experience the luxurious level</Text>
                     <Text style={styles.mediumText}>of our spa treatments</Text>
-                </View>
+                </Animated.View>
             </ImageBackground>
-            <Text style={{fontSize:20,fontWeight:"bold", margin:4,}}>Hottest</Text>
-            <FlatList data={hotels} horizontal showsHorizontalScrollIndicator={true}
+            <Text className={'text-[20] font-bold m-[4] text-white'}>Hottest</Text>
+            <Animated.FlatList entering={FadeInDown.delay(300).duration(100).springify()} data={hotels} horizontal showsHorizontalScrollIndicator={true}
                 renderItem={({item, index}) => (
-                    <View style={styles.cardContainer}>
+                    <Animated.View entering={FadeInDown.delay(400).duration(100).springify()} style={styles.cardContainer}>
                         <ImageBackground index={index} style={styles.card} source={{uri:item.url}} resizeMode={"cover"} blurRadius={1}>
                             <View style={styles.overlay}>
                                 <Text>{item.location}</Text>
@@ -117,11 +118,11 @@ export default function HomeComponent() {
                                 <Text>{item.price}</Text>
                             </View>
                         </ImageBackground>
-                    </View>
+                    </Animated.View>
                 )}
             />
             />
             <Footer/>
-        </ScrollView>
+        </Animated.View>
     )
 }

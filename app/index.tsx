@@ -1,14 +1,6 @@
-import HomeComponent from "@/components/home/homeComponent";
-import {SafeAreaView, ScrollView} from "react-native";
-import {Stack} from "expo-router";
+import {Redirect} from 'expo-router';
 
-export default function DefaultScreen(){
 
-    return (
-        <SafeAreaView>
-            <ScrollView>
-                <HomeComponent/>
-            </ScrollView>
-        </SafeAreaView>
-    )
+export default function RedirectStart() {
+    return <Redirect href={"/home"}/>
 }

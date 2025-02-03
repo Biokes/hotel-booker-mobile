@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {Animated, Text, StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import {FadeInDown} from "react-native-reanimated";
 
 export default function Footer() {
     const [email, setEmail] = useState<string>('');
@@ -28,39 +29,42 @@ export default function Footer() {
     };
 
     return (
-        <View style={styles.container}>
-            <View style={styles.section}>
+        <Animated.View entering={FadeInDown.duration(700).springify()} style={styles.container}>
+            <Animated.View entering={FadeInDown..delay(100).duration(700).springify()} style={styles.section}>
                 <Text style={styles.headingText}>Opening Hours</Text>
                 <Text>Weekdays: 8:00–20:00</Text>
                 <Text>Weekends: 9:00–18:00</Text>
                 <Text>© 2019 Royal Villas. All Rights Reserved.</Text>
-            </View>
-            <View style={styles.section}>
+            </Animated.View>
+            <Animated.View entering={FadeInDown.delay(200).duration(700).springify()} style={styles.section}>
                 <Text style={styles.headingText}>Address</Text>
                 <Text>6036 Richmond hwy., Alexandria, VA, 2230</Text>
                 <Text>Call Us: +1 (409) 987–5874</Text>
                 <Text>Email: mainMail@email.com</Text>
-            </View>
-            <View style={styles.section}>
+            </Animated.View>
+            <Animated.View entering={FadeInDown.delay(300).duration(700).springify()} style={styles.section}>
                 <Text style={styles.headingText}>Join our newsletter</Text>
                 <View>
                     <TextInput
                         value={email}
                         placeholder="Enter your email"
                         keyboardType="email-address"
-                        // style={styles.input}
+                        placeholderTextColor={'gray'}
                         onChangeText={(e) => setEmail(e)}
                     />
                     <TouchableOpacity
-                        // style={[styles.button, !isValid(email) && styles.buttonDisabled]}
+                        className={'w-full bg-sky-400 p-3 rounded-2xl mb-3'}
                         onPress={handleSubmit}
                         disabled={!isValid(email)}
                     >
-                        <Text>Subscribe</Text>
+                        <Text className={'text-xl font-bold text-white text-center'}>Subscribe</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
-        </View>
+            </Animated.View>
+            {/*<Animated.View>*/}
+
+            {/*</Animated.View>*/}
+        </Animated.View>
     );
 }
 

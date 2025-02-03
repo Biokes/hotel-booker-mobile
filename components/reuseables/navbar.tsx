@@ -1,11 +1,11 @@
-import {View, Text} from 'react-native'
+import {Animated, Text} from 'react-native'
 import React from 'react'
-import styles from '@/styles/style'
+import {FadeInDown} from "react-native-reanimated";
 export default function Navbar() {
     return (
-        <View  style={styles.navbar}>
-            <Text style={styles.name}>Royal Villas</Text>
-            <Text>Book now</Text>
-        </View>
+        <Animated.View entering={FadeInDown.duration(300).springify()} className={'flex justify-between px-3'}>
+            <Text className={'text-4 text-white font-bold'}>Royal Villas</Text>
+            <Text className={'text-4 text-white font-normal'}>Book now</Text>
+        </Animated.View>
     )
 }
