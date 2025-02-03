@@ -2,12 +2,8 @@ import {Tabs} from 'expo-router'
 import {View} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 
-const TabIcon =({focused,icon,title}:{focused:boolean,icon:any,title:string})=>(
-    <View className={'flex-1 mt-3 flex flex-col items-center'}>
 
-    </View>
-)
-export default ()=>{
+export default function TabsLayout(){
     return (
         <Tabs screenOptions={{
             tabBarShowLabel:false,

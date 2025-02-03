@@ -43,17 +43,16 @@ const styles= StyleSheet.create({
         gap:10,
     },
     card:{
-        justifyContent:'center',
-        alignItems:'center',
-        gap:5,
-        width:200,
-        height:150,
+        width:'80%',
+        flex:1,
         borderRadius:25,
     },
     cardContainer:{
         overflow:'hidden',
         marginInline:5,
-        width: 300
+        width: width* 0.6,
+        height: 250,
+        gap:5
     }
 })
 export default function HomeComponent() {

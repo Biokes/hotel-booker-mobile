@@ -7,6 +7,7 @@ import 'react-native-reanimated';
 import "./global.css";
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import ModalProvider from "@/contexts/modalProvider";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,9 +29,11 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack options={{ headerShown: false }}>
+      <ModalProvider>
+        <Stack options={{ headerShown: false }}>
           <Stack.Screen name="not-found" options={{headerShown:false}}/>
           <Stack.Screen name="(tabs)"  options={{headerShown:false}}/>
-      </Stack>
+        </Stack>
+      </ModalProvider>
     </ThemeProvider>
   );}
