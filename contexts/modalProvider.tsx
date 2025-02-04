@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ModalContext from "@/contexts/modalContext";
+import BookingModal from "@/components/reuseables/bookingModal";
 const ModalProvider = ({ children }) => {
     const [isOpen, setOpen] = useState<boolean>(false);
     const toggleModal = () => {
@@ -11,7 +12,7 @@ const ModalProvider = ({ children }) => {
     return (
         <ModalContext.Provider value={contextValue}>
             {children}
-            <BookingModal/>
+            <BookingModal isOpen={isOpen} toggle={toggleModal}/>
         </ModalContext.Provider>
     );
 };

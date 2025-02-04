@@ -27,7 +27,7 @@ export default function Footer() {
 
     return (
         <Animated.View entering={FadeInDown.duration(700).springify()} style={styles.container}>
-            <Animated.View entering={FadeInDown..delay(100).duration(700).springify()} style={styles.section}>
+            <Animated.View entering={FadeInDown.delay(100).duration(700).springify()} style={styles.section}>
                 <Text style={styles.headingText}>Opening Hours</Text>
                 <Text>Weekdays: 8:00–20:00</Text>
                 <Text>Weekends: 9:00–18:00</Text>

@@ -14,7 +14,7 @@ export default function TabsLayout(){
 
         }}>
             <Tabs.Screen name={'home'}
-                         options={{headerShown:false, title:'Home',tabBarIcon:({focused, color})=>(<Ionicons
+                         options={{headerShown:false, title:'index',tabBarIcon:({focused, color})=>(<Ionicons
                                  name={focused? "home-sharp":"home-outline"} color={color} size={24}/>)}}/>
             <Tabs.Screen name={'about'}
                          options={{headerShown:false, title:'About',
