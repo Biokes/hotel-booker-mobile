@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet, TextInput, View, Pressable} from 'react-native';
+import { Text, StyleSheet, TextInput, View, TouchableOpacity} from 'react-native';
 import {FadeInDown} from "react-native-reanimated";
 import Animated from 'react-native-reanimated'
+
 export default function Footer() {
     const [email, setEmail] = useState<string>('');
     const [isShowingModal, showModal] = useState<boolean>(false);
@@ -48,12 +49,12 @@ export default function Footer() {
                         keyboardType="email-address"
                         onChangeText={(e) => setEmail(e)}
                     />
-                    <Pressable style={{padding:4,width:80,backgroundColor:"#008EEF",borderWidth:1,borderRadius:4}}
+                    <TouchableOpacity style={{padding:4,width:80,backgroundColor:"#AFABA8",borderWidth:1,borderRadius:4}}
                         onPress={handleSubmit}
                         disabled={!isValid(email)}
                     >
-                        <Text style={{fontSize:16, fontWeight:"600", color:'#ffffff',justifyContent:"center"}}>Subscribe</Text>
-                    </Pressable>
+                        <Text style={{fontSize:16, fontWeight:"600", color:'#000000',justifyContent:"center"}}>Subscribe</Text>
+                    </TouchableOpacity>
                 </View>
             </Animated.View>
             {/*<Animated.View>*/}
@@ -76,13 +77,13 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         gap:4,
         backgroundColor:'#dadada',
-        padding:15,
+        padding:10,
         borderRadius:10,
         borderWidth:1,
         borderColor:'#000000'
     },
     headingText:{
-        fontSize:25
+        fontSize:20
     },
     BigText: {
         fontSize: 20,

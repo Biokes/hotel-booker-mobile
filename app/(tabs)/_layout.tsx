@@ -8,7 +8,7 @@ export default function TabsLayout(){
             tabBarShowLabel:false,
             tabBarActiveTintColor:'#2d2d2d',
             headerStyle:{backgroundColor:"#25292e"},
-            tabStyle:{backgroundColor:"#25292e"},
+            // tabStyle:{backgroundColor:"#25292e"},
             headerShadowVisible:false
 
         }}>

@@ -1,10 +1,11 @@
 import {View, Text, StyleSheet, ImageBackground, TouchableOpacity,ScrollView} from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import Animated from 'react-native-reanimated';
 import Navbar from "@/components/reuseables/navbar";
 import {RoomData} from "@/types/interfaces";
 import Footer from "@/components/reuseables/footer";
 import {FadeInDown} from "react-native-reanimated";
+import ModalContext from "@/contexts/modalContext";
 
 const styles = StyleSheet.create({
     background: {
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     }
 })
 export default function HomeComponent() {
+    const { toggle} = useContext(ModalContext)
     const hotels : RoomData[] = [
         {
             location :'USA',
@@ -132,7 +134,7 @@ export default function HomeComponent() {
                 <Text style={{fontWeight:700, fontSize:20, paddingInline: 7, textAlign:'center'}}>
                     Luxury hotel that will let you step into celebrity’s slippers.
                 </Text>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={toggle}>
                     <Text style={{fontSize:17,textTransform:"capitalize", fontWeight:"bold"}}>Book a room </Text>
                 </TouchableOpacity>
                 <Animated.FlatList style={styles.slider} entering={FadeInDown.delay(300).duration(100).springify()} data={hotels} horizontal showsHorizontalScrollIndicator={false}

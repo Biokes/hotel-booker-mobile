@@ -29,7 +29,8 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <ModalProvider>
-        <Stack options={{ headerShown: false }}>
+        <Stack>
+          <Stack.Screen name="modal" options={{presentation: 'modal',headerShown: false }}/>
           <Stack.Screen name="+not-found" options={{headerShown:false}}/>
           <Stack.Screen name="(tabs)"  options={{headerShown:false}}/>
         </Stack>
