@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet, TextInput, View, TouchableOpacity} from 'react-native';
+import ModalContext from '@/contexts/modalContext';
+import React, { useState, useEffect, useContext } from 'react';
+import { Text, StyleSheet, TextInput, View, TouchableOpacity, Dimensions} from 'react-native';
 import {FadeInDown} from "react-native-reanimated";
 import Animated from 'react-native-reanimated'
+
+const {width} = Dimensions.get('window')
 
 export default function Footer() {
     const [email, setEmail] = useState<string>('');
     const [isShowingModal, showModal] = useState<boolean>(false);
-
+    const { setModalContent, toggle } = useContext(ModalContext)
     useEffect(() => {
         if (isShowingModal) {
             const timer = setTimeout(() => {
@@ -19,9 +22,15 @@ export default function Footer() {
     const isValid = (email: string): boolean => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
+    const subscribe = () => (
+        <View style={styles.subscribe}>
+            <Text style={styles.subText}>Subscribed successfully</Text>
+        </View>
+    )
 
     const handleSubmit = () => {
-        showModal(true);
+        setModalContent(subscribe())
+        toggle();
         setEmail('');
     };
 
@@ -57,9 +66,6 @@ export default function Footer() {
                     </TouchableOpacity>
                 </View>
             </Animated.View>
-            {/*<Animated.View>*/}
-
-            {/*</Animated.View>*/}
         </Animated.View>
     );
 }
@@ -101,4 +107,18 @@ const styles = StyleSheet.create({
         fontWeight: 'medium',
         color: '#000000'
     },
+    subscribe: {
+        padding: 20,
+        backgroundColor: '#DCD6D3',
+        width: width * 1,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius:10
+    },
+    subText: {
+        fontSize: 15,
+        color:'#2C2B2A'
+    }
 });

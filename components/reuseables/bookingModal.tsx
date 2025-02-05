@@ -1,26 +1,24 @@
 import {Modal, Pressable, View,Text} from "react-native";
-import {Fontisto} from "@expo/vector-icons";
 import {useContext} from "react";
 import ModalContext from "@/contexts/modalContext";
 
-export default function BookingModal(){
-    const {isOpen,toggle} = useContext(ModalContext)
+interface BookingModalProps {
+    modalContent: React.ReactNode;
+  }
+  
+  export default function BookingModal({ modalContent }: BookingModalProps) {
+    const {isOpen} = useContext(ModalContext)
     return (
         <Modal animationType={"slide"} transparent={true} visble={isOpen}>
-            <View style={styles.modalContent}>
-                <View style={styles.titleContainer}>
-                    <Text>Search</Text>
-                    <Pressable onPress={toggle}>
-                        <Fontisto name="search" size={24} color="black" />
-                    </Pressable>
-                </View>
-                <View>
-
-                </View>
-            </View>
+            {modalContent }
         </Modal>
     )
 }
+// <Text>Search</Text>
+{/* <Pressable onPress={toggle}>
+<Fontisto name="search" size={24} color="black" />
+</Pressable>
+</View> */}
 const styles={
     modalContent: {
         height:'60%',
