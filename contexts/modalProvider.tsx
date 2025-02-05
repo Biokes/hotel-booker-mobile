@@ -7,12 +7,12 @@ const ModalProvider = ({ children }) => {
         setOpen(!isOpen);
     };
 
-    const contextValue = {isOpen, toggleModal,};
+    // const contextValue = {isOpen, toggleModal,};
 
     return (
-        <ModalContext.Provider value={contextValue}>
+        <ModalContext.Provider value={{isOpen: isOpen,toggle:toggleModal}}>
             {children}
-            <BookingModal isOpen={isOpen} toggle={toggleModal}/>
+            {isOpen && <BookingModal/>}
         </ModalContext.Provider>
     );
 };

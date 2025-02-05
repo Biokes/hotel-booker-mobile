@@ -1,22 +1,18 @@
-import {View, Text, SafeAreaView, ImageBackground} from 'react-native'
+import {View, Text, SafeAreaView, ImageBackground, ScrollView} from 'react-native'
 import React from 'react'
 import Animated, {useAnimatedRef} from "react-native-reanimated"
 import Navbar from "@/components/reuseables/navbar";
 import Footer from "@/components/reuseables/footer";
-import {ThemedText} from "@/components/ThemedText";
-export default function Contact() {
-    const scrollRef = useAnimatedRef<Animated.ScrollView>();
+export default function ContactComponent() {
 
     return (
         <SafeAreaView>
-            <Animated.ScrollView ref={scrollRef}>
+            <ScrollView>
                 <View>
                     <Navbar/>
-                    <ImageBackground src={""}>
                         <Text>Contacts</Text>
-                    </ImageBackground>
                     <View>
-                        <ThemedText>Get in touch</ThemedText>
+                        <Text>Get in touch</Text>
                         <Text>
                             we are available 24/7 by fax, e-mail or by phone. You can also use
                             our quick contact form to ask a question about our services.
@@ -29,7 +25,7 @@ export default function Contact() {
                     </View>*/}
                     <Footer/>
                 </View>
-            </Animated.ScrollView>
+            </ScrollView>
         </SafeAreaView>
     )
 }

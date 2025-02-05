@@ -1,7 +1,6 @@
-import {SafeAreaView, Text, View} from 'react-native'
+import {SafeAreaView, Text, View, Image,ScrollView} from 'react-native'
 import React from 'react'
 import Navbar from "@/components/reuseables/navbar";
-import {ThemedText} from "@/components/ThemedText";
 import Animated, {useAnimatedRef} from 'react-native-reanimated'
 import Footer from "@/components/reuseables/footer";
 import {Stack} from "expo-router";
@@ -48,14 +47,14 @@ export default function AboutScreen(){
     const scrollRef = useAnimatedRef<Animated.ScrollView>();
 
     return (
-        <Stack.Screen options={{headerShown:false}}>
+        <ScrollView >
             <SafeAreaView>
                 <Animated.ScrollView ref={scrollRef} showsHorizontalScrollIndicator={false}>
                     <Navbar/>
                     <Text>About us</Text>
-                    <Image source={""}/>
+                    <Image src={""}/>
                     <View>
-                        <ThemedText lightColor={'white'} darkColor={'black'}>A few word from us</ThemedText>
+                        <Text>A few word from us</Text>
                         <Text>
                             Tired of your daily routine? Seeking for a place to stay
                             and rest with your family? You are in the right place! Our
@@ -85,6 +84,6 @@ export default function AboutScreen(){
                     <Footer/>
                 </Animated.ScrollView>
             </SafeAreaView>
-        </Stack.Screen>
+        </ScrollView>
     )
 }

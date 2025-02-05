@@ -1,58 +1,79 @@
-import {View, Text, StyleSheet, Dimensions, ImageBackground, Animated,} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, TouchableOpacity,ScrollView} from 'react-native'
 import React from 'react'
+import Animated from 'react-native-reanimated';
 import Navbar from "@/components/reuseables/navbar";
 import {RoomData} from "@/types/interfaces";
 import Footer from "@/components/reuseables/footer";
-import FlatList = Animated.FlatList;
 import {FadeInDown} from "react-native-reanimated";
 
-const {width, height} = Dimensions.get('screen')
-const styles= StyleSheet.create({
-    background:{
-        display:'flex',
-        flexDirection:'column',
-        height:230,
-        justifyContent:'center',
-        alignItems:'flex-start',
-        paddingInline:15,
-        paddingBlock:20
+const styles = StyleSheet.create({
+    background: {
+        display: 'flex',
+        flexDirection: 'column',
+        height: 230,
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        paddingInline: 15,
+        paddingBlock: 20
     },
-    BigText:{
-        fontSize:20,
-        fontWeight:"bold",
-        color:'#ffffff',
+    BigText: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: '#ffffff',
+        textTransform:'capitalize'
     },
-    smallText:{
-        fontSize:13,
-        fontWeight:"medium",
-        color:'#ffffff',
+    smallText: {
+        fontSize: 13,
+        fontWeight: "medium",
+        color: '#ffffff',
     },
-    mediumText:{
+    mediumText: {
         fontSize: 15,
-        fontWeight:'medium',
-        color:'#ffffff'
+        fontWeight: 'medium',
+        color: '#ffffff'
     },
-    overlay:{
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        padding: 10,
-        borderRadius: 10,
+    overlay: {
+        backgroundColor: 'rgba(58, 58, 58, 0.5)',
+        padding: 5,
+        borderRadius: 5,
     },
-    flatList:{
+    flatList: {
         display: "flex",
-        flexDirection:'column',
-        gap:10,
+        flexDirection: 'column',
+        gap: 10,
     },
-    card:{
-        width:'80%',
-        flex:1,
-        borderRadius:25,
+    card: {
+        width: 380,
+        flex: 1,
+        borderRadius: 15,
+        justifyContent: 'center',
+        alignItems:'center'
     },
-    cardContainer:{
-        overflow:'hidden',
-        marginInline:5,
-        width: width* 0.6,
-        height: 250,
-        gap:5
+    cardContainer: {
+        // overflow: 'hidden',
+        // marginInline: 5,
+        width: 400,
+        height: 200,
+        borderRadius:10
+    },
+    hotelsText: {
+        backgroundColor: 'rgba(58, 58, 58, 0.8)',
+        width: '80%',
+        paddingInline: 15,
+        borderRadius: 10,
+        paddingBlock:10
+    },
+    button: {
+        padding: 3,
+        borderWidth: 1,
+        borderRadius: 5,
+        width: 200,
+        justifyContent: "center",
+        alignItems: "center",
+        height: 30
+    },
+    slider: {
+        width:'95%'
     }
 })
 export default function HomeComponent() {
@@ -95,7 +116,8 @@ export default function HomeComponent() {
         }
     ]
     return (
-        <Animated.View entering={FadeInDown.duration(100).springify()}>
+        <ScrollView showsVerticalScrollIndicator={true}>
+            <Animated.View entering={FadeInDown.duration(100).springify()}>
             <Navbar/>
             <ImageBackground source={{uri:'https://cdn.britannica.com/96/115096-050-5AFDAF5D/Bellagio-Hotel-Casino-Las-Vegas.jpg'}}
                 resizeMode={"cover"} blurRadius={4} style={styles.background}
@@ -106,22 +128,29 @@ export default function HomeComponent() {
                     <Text style={styles.mediumText}>of our spa treatments</Text>
                 </Animated.View>
             </ImageBackground>
-            <Text className={'text-[20] font-bold m-[4] text-white'}>Hottest</Text>
-            <Animated.FlatList entering={FadeInDown.delay(300).duration(100).springify()} data={hotels} horizontal showsHorizontalScrollIndicator={true}
+            <View style={{paddingBlock:10,justifyContent:"center",alignItems:'center',gap:20,backgroundColor:'#DCD6D3', borderRadius:5}}>
+                <Text style={{fontWeight:700, fontSize:20, paddingInline: 7, textAlign:'center'}}>
+                    Luxury hotel that will let you step into celebrity’s slippers.
+                </Text>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={{fontSize:17,textTransform:"capitalize", fontWeight:"bold"}}>Book a room </Text>
+                </TouchableOpacity>
+                <Animated.FlatList style={styles.slider} entering={FadeInDown.delay(300).duration(100).springify()} data={hotels} horizontal showsHorizontalScrollIndicator={false}
                 renderItem={({item, index}) => (
                     <Animated.View entering={FadeInDown.delay(400).duration(100).springify()} style={styles.cardContainer}>
-                        <ImageBackground index={index} style={styles.card} source={{uri:item.url}} resizeMode={"cover"} blurRadius={1}>
-                            <View style={styles.overlay}>
-                                <Text>{item.location}</Text>
-                                <Text>{item.description}</Text>
-                                <Text>{item.price}</Text>
+                        <ImageBackground key={index} style={styles.card} source={{uri:item.url}} resizeMode={"cover"} blurRadius={1}>
+                            <View style={styles.hotelsText}>
+                                <Text style={styles.BigText}>{item.location}</Text>
+                                <Text style={styles.smallText} numberOfLines={1}>{item.description}</Text>
+                                <Text style={styles.smallText}>{item.price}</Text>
                             </View>
                         </ImageBackground>
                     </Animated.View>
                 )}
             />
-            />
+            </View>
             <Footer/>
         </Animated.View>
+        </ScrollView>
     )
 }

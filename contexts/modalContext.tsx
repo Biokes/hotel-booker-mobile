@@ -1,8 +1,4 @@
-import React from "react";
+import {createContext} from "react";
 
-const ModalContext = React.createContext({
-        isOpen: false,
-        toggleModal: () => {},
-    }
-);
+const ModalContext = createContext({isOpen:false, toggle:()=>{}});
 export default ModalContext;
