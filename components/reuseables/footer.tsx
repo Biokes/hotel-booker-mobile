@@ -1,40 +1,52 @@
-import ModalContext from '@/contexts/modalContext';
-import React, { useState, useEffect, useContext } from 'react';
-import { Text, StyleSheet, TextInput, View, TouchableOpacity, Dimensions} from 'react-native';
+// import ModalContext from '@/contexts/modalContext';
+import React, {useState,
+    // useEffect, useContext
+} from 'react';
+import { Text, StyleSheet, TextInput, View, TouchableOpacity, Modal} from 'react-native';
 import {FadeInDown} from "react-native-reanimated";
 import Animated from 'react-native-reanimated'
 
-const {width} = Dimensions.get('window')
+// const {width} = Dimensions.get('window')
+
+
+const SubscriptionModal = ({ isVisible, onClose }: { isVisible: boolean, onClose: () => void }) => (
+    <Modal visible={isVisible} transparent={true} animationType="slide">
+       <View style={styles.subscribe}>
+            <View style={styles.section}>
+                <Text style={styles.subText}>Subscribed successfully</Text>
+                <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+                    <Text style={styles.closeText}>Close</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    </Modal>
+);
 
 export default function Footer() {
     const [email, setEmail] = useState<string>('');
     const [isShowingModal, showModal] = useState<boolean>(false);
-    const { setModalContent, toggle } = useContext(ModalContext)
-    useEffect(() => {
-        if (isShowingModal) {
-            const timer = setTimeout(() => {
-                showModal(false);
-            }, 5000);
-            return () => clearTimeout(timer);
-        }
-    }, [isShowingModal]);
+    // const { toggle} = useContext(ModalContext)
+    // useEffect(() => {
+    //     const backAction = () => {
+    //         if (isOpen) {
+    //             toggle();
+    //             return true;
+    //         }
+    //         return false;
+    //     };
+
+    //     if (isOpen) {
+    //         const backHandler = BackHandler.addEventListener("hardwareBackPress", backAction);
+    //         return () => backHandler.remove();
+    //     }
+    // }, [isOpen]);
 
     const isValid = (email: string): boolean => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
-    const subscribe = () => (
-        <View style={styles.subscribe}>
-            <Text style={styles.subText}>Subscribed successfully</Text>
-            <TouchableOpacity onPress={toggle} style={styles.closeButton}>
-                <Text style={styles.closeText}>Close</Text>
-            </TouchableOpacity>
-        </View>
-    )
+    const toggleModal = () => {
+        showModal(!isShowingModal)
 
-    const handleSubmit = () => {
-        setModalContent(subscribe())
-        toggle();
-        setEmail('');
     };
 
     return (
@@ -62,14 +74,16 @@ export default function Footer() {
                         onChangeText={(e) => setEmail(e)}
                     />
                     <TouchableOpacity style={{padding:4,width:80,backgroundColor:"#AFABA8",borderWidth:1,borderRadius:4}}
-                        onPress={handleSubmit}
+                        onPress={toggleModal}
                         disabled={!isValid(email)}
                     >
                         <Text style={{fontSize:16, fontWeight:"600", color:'#000000',justifyContent:"center"}}>Subscribe</Text>
                     </TouchableOpacity>
                 </View>
             </Animated.View>
+            <SubscriptionModal isVisible={isShowingModal} onClose={()=>toggleModal()} />
         </Animated.View>
+
     );
 }
 
@@ -111,15 +125,11 @@ const styles = StyleSheet.create({
         color: '#000000'
     },
     subscribe: {
-        padding: 20,
-        backgroundColor: '#DCD6D3',
-        width: width * 0.7,
+        backgroundColor: 'rgba(187, 224, 255, 0.5)',
+        // width: width * 0.7,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        height:100,
     },
     subText: {
         fontSize: 15,

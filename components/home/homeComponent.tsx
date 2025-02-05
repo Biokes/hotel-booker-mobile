@@ -62,7 +62,11 @@ const styles = StyleSheet.create({
         width: '80%',
         paddingInline: 15,
         borderRadius: 10,
-        paddingBlock:10
+        paddingBlock: 10,
+        // flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems:'center'
     },
     button: {
         padding: 3,

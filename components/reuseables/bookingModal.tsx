@@ -11,9 +11,7 @@ interface BookingModalProps {
     return (
         <Modal animationType={"slide"} transparent={true} visible={isOpen}>
             <View style={styles.modalOverlay}>
-                <View style={styles.modalContent}>
-                    {modalContent}
-                </View>
+                {modalContent}
             </View>
         </Modal>
     )
@@ -46,14 +44,16 @@ const styles={
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "rgba(205, 231, 255, 0.5)",
+        position: 'absolute',
+        top: '-50%',
+        left:'-50%'
+        
       },
-      modalContent: {
-        width: "90%",
-        height: "60%",
-        backgroundColor: "#9f9e96",
-        borderTopRightRadius: 18,
-        borderTopLeftRadius: 18,
-        padding: 20,
-        alignItems: "center",
-      },
+    //   modalContent: {
+    //     backgroundColor: "#9f9e96",
+    //     borderTopRightRadius: 18,
+    //     borderTopLeftRadius: 18,
+    //     padding: 20,
+    //     alignItems: "center",
+    //   },
 }

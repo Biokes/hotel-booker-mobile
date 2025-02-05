@@ -15,7 +15,7 @@ export default function TabsLayout(){
             <Tabs.Screen name={'index'}
                          options={{headerShown:false, title:'index',tabBarIcon:({focused, color})=>(<Ionicons
                                  name={focused? "home-sharp":"home-outline"} color={color} size={24}/>)}}/>
-            <Tabs.Screen name={'contact'}
+             <Tabs.Screen name={'contact'}
                          options={{headerShown:false, title:'contact',
                              tabBarIcon:({focused, color})=>(
                                  <Ionicons name={focused? "call":"call-outline"} color={color} size={24}/>)}}/>

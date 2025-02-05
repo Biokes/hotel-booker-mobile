@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 
+
 import { useColorScheme } from '@/hooks/useColorScheme';
 import ModalProvider from "@/contexts/modalProvider";
 
@@ -30,7 +31,6 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <ModalProvider>
         <Stack>
-          <Stack.Screen name="modal" options={{presentation: 'modal',headerShown: false }}/>
           <Stack.Screen name="+not-found" options={{headerShown:false}}/>
           <Stack.Screen name="(tabs)"  options={{headerShown:false}}/>
         </Stack>
