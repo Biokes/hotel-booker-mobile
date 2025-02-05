@@ -25,6 +25,9 @@ export default function Footer() {
     const subscribe = () => (
         <View style={styles.subscribe}>
             <Text style={styles.subText}>Subscribed successfully</Text>
+            <TouchableOpacity onPress={toggle} style={styles.closeButton}>
+                <Text style={styles.closeText}>Close</Text>
+            </TouchableOpacity>
         </View>
     )
 
@@ -110,15 +113,26 @@ const styles = StyleSheet.create({
     subscribe: {
         padding: 20,
         backgroundColor: '#DCD6D3',
-        width: width * 1,
+        width: width * 0.7,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         borderTopLeftRadius: 10,
-        borderTopRightRadius:10
+        borderTopRightRadius: 10,
+        height:100,
     },
     subText: {
         fontSize: 15,
         color:'#2C2B2A'
-    }
+    },
+    closeButton: {
+        marginTop: 20,
+        padding: 10,
+        backgroundColor: "#524b4b",
+        borderRadius: 8,
+      },
+      closeText: {
+        color: "white",
+        fontSize: 16,
+      },
 });
